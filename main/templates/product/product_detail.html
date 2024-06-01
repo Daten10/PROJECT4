@@ -1,0 +1,43 @@
+{% include 'header.html'%}
+<br>
+<center>
+
+
+<img src="{{ product_id.image.url }}" class="img-thumbnail" alt="">
+<br>
+    <br>
+<div class="card" style="width: 30rem;">
+  <div class="card-header">
+    <h1>{{ product_id.name }}</h1>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Описание:{{ product_id.desc }}</li>
+    <li class="list-group-item"><b>Цена: {{ product_id.price }}₽</b> </li>
+
+  </ul>
+</div>
+
+
+<p> </p>
+<p></p>
+
+
+<br>
+<br>
+
+<table border="1" width="600" cellpadding="5">
+    <tr>
+        <td>Оценка </td>  <td>Отзыв</td> <td>Дата отзыва</td>
+    </tr>
+    {% for i in product_id.review_book.all %}
+    <tr>
+        <td>{{ i.stars }}</td> <td>{{ i.text }}</td> <td>{{ i.created_at }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<br>
+<a class="btn btn-primary" href="/products/" role="button">Вернуться назад</a>
+
+</center>
+<br>
+{% include 'footer.html'%}

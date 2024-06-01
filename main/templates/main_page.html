@@ -1,0 +1,30 @@
+{% include 'header.html'%}
+
+
+    {% for j in Slogan %}
+        <h1> {{ j.text }}</h1>
+    {% endfor %}
+
+    <ul>
+
+
+    {% for i in Video %}
+        <li>
+            <h3>{{ i.title }}</h3>
+            <iframe src="{{ i.video }}"></iframe>
+
+        </li>
+    {% endfor %}
+
+
+        {% for i in TopGadgets %}
+        <li>
+            <h3>{{ i.name }}</h3>
+            <p>{{ i.desc }}</p>
+            <p> цена: {{ i.price }}</p>
+            <img src="{{ i.image.url }}" width="400" height="400">
+
+        </li>
+    {% endfor %}
+</ul>
+{% include 'footer.html'%}

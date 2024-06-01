@@ -1,0 +1,24 @@
+{% include 'header.html' %}
+
+
+<ul>
+    {% for i in product %}
+        <li>
+
+            <h3>{{ i.name }}</h3>
+            <p>{{ i.desc }}</p>
+            <p>цена: {{ i.price }}</p>
+            <img src="{{ i.image.url }}" width="400" height="400">
+
+        </li>
+    <a href="/products/{{ i.id }}" class="btn btn-primary">Подробнее</a>
+    {% endfor %}
+</ul>
+
+
+<div style="display: flex; justify-content: center; margin-top: 20px;">
+
+    <a class="btn btn-primary" href="/create_review/" role="button">Добавить отзыв</a>
+</div>
+
+{% include 'footer.html'%}
