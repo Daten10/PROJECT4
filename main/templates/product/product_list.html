@@ -8,9 +8,11 @@
             <h3>{{ i.name }}</h3>
             <p>{{ i.desc }}</p>
             <p>цена: {{ i.price }}</p>
+
             <img src="{{ i.image.url }}" width="400" height="400">
 
         </li>
+
     <a href="/products/{{ i.id }}" class="btn btn-primary">Подробнее</a>
     {% endfor %}
 </ul>

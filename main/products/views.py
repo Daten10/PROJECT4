@@ -3,6 +3,7 @@ from . import models, forms
 from django.views import generic
 from django.shortcuts import get_object_or_404
 
+
 class ProductView(generic.ListView):
     template_name = 'product/product_list.html'
     context_object_name = 'product'
@@ -30,3 +31,30 @@ class ProductsDetailView(generic.DetailView):
     def get_object(self, **kwargs):
         product_id = self.kwargs.get("id")
         return get_object_or_404(models.Product, id=product_id)
+
+
+class AddProductView(generic.ListView):
+    template_name = "product/category_product.html"
+    context_object_name = "category_product"
+    model = models.Product
+
+    def get_queryset(self):
+        return self.model.objects.all().order_by("-id")
+
+
+class OldView(generic.ListView):
+    template_name = "product/old_product.html"
+    context_object_name = "old_product"
+    model = models.Product
+
+    def get_queryset(self):
+        return self.model.objects.filter(tags__name="Пенсионеры").order_by("-id")
+
+
+class NewView(generic.ListView):
+    template_name = "product/new_product.html"
+    context_object_name = "new_product"
+    model = models.Product
+
+    def get_queryset(self):
+        return self.model.objects.filter(tags__name="Молодежь").order_by("-id")

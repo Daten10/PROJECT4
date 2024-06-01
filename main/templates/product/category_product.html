@@ -1,0 +1,30 @@
+{% include 'header.html' %}
+
+
+<ul>
+
+    {% for i in category_product %}
+        <li>
+
+            <h3>{{ i.name }}</h3>
+            <p>{{ i.desc }}</p>
+            <p>цена: {{ i.price }}</p>
+
+            <img src="{{ i.image.url }}" width="400" height="400">
+
+        </li>
+             <li class="list-group-item">{% for j in i.tags.all %}
+                    <p>#{{ j.name }}</p>
+                {% endfor %}</li>
+    {% endfor %}
+</ul>
+
+<a class="btn btn-primary" href="/old_product/" role="button">Пенсионеры</a>
+    <a class="btn btn-primary" href="/new_product/" role="button">Молодежь</a>
+    <br>
+    <br>
+    <a class="btn btn-primary" href="/category_product/" role="button">Вернуться</a>
+
+
+
+{% include 'footer.html'%}
